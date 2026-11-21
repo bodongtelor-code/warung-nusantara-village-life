@@ -26,6 +26,19 @@ box(shop,7.2,1.28,.13,0,4.4,4.64,mat(0x9e3829),false);
 box(shop,7.3,.09,.2,0,5.08,4.64,mat(0xf0c66b),false);
 box(shop,7.3,.09,.2,0,3.72,4.64,mat(0xf0c66b),false);
 label(shop,'WARUNG NUSANTARA',0,4.41,4.73,6.9,'#a43222');
+// Front-facing market display: colorful produce crates on the right-hand side,
+// outside the central customer entrance and checkout walkway.
+const crateWood=mat(0x98683c),produceColors=[0xe84b36,0x75b94e,0xf0bb38];
+for(let j=0;j<3;j++){
+ const x=2.0+j*.55,z=3.02;
+ box(shop,.49,.31,.58,x,.39,z,crateWood,false);
+ for(const s of [-1,1])box(shop,.055,.38,.61,x+s*.24,.4,z,mat(0xc38b4e),false);
+ for(let k=0;k<4;k++){
+  const fruit=new T.Mesh(new T.SphereGeometry(.115,10,8),mat(produceColors[j]));
+  fruit.position.set(x+(k%2? .11:-.11),.64,z+(k<2?-.12:.12));shop.add(fruit);
+ }
+}
+label(shop,'BUAH SEGAR',2.58,1.15,3.38,1.45,'#43834c');
 // Original fictional packaging art, painted on canvas and mapped onto each 3D product.
 const packaging=[
  ['MIE','GURIH','#ed392b','#ffdb34','MIE INSTAN'],
