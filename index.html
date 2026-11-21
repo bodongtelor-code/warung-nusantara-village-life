@@ -39,6 +39,18 @@ for(let j=0;j<3;j++){
  }
 }
 label(shop,'BUAH SEGAR',2.58,1.15,3.38,1.45,'#43834c');
+// Market-day facade: a visible striped canopy over the produce stall, with a wood-framed price board.
+for(const x of [1.72,3.48])box(shop,.085,2.03,.085,x,1.25,3.34,materials.wood,false);
+for(let k=0;k<6;k++){
+ const x=1.72+(k+.5)*1.76/6;
+ const stripe=box(shop,1.76/6,.07,1.0,x,2.29,3.03,mat(k%2===0?0xf7e5bd:0xd94c39),false);
+ stripe.rotation.x=-.12;
+}
+box(shop,1.92,.1,.1,2.6,2.29,3.57,mat(0x7d5136),false);
+box(shop,1.55,.42,.07,2.6,1.77,3.43,mat(0x3e7c4d),false);
+label(shop,'BUAH LOKAL',2.6,1.77,3.49,1.43,'#3e7c4d');
+// Price tags sit directly on the crate fronts and remain separate from checkout prices.
+for(let j=0;j<3;j++)label(shop,['APEL','JERUK','PISANG'][j],2.0+j*.55,.45,3.35,.43,'#8c5a36');
 // Original fictional packaging art, painted on canvas and mapped onto each 3D product.
 const packaging=[
  ['MIE','GURIH','#ed392b','#ffdb34','MIE INSTAN'],
